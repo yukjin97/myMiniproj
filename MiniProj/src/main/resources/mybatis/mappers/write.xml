@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mulcam.miniproj.dao.movieDAO">
+
+	<insert id="insertboard" parameterType="writeform">
+	<![CDATA[
+		insert into movie (title,image,story,boardnum,genre) values (#{title},#{image},#{story},#{boardnum},#{genre})
+	]]>
+	</insert>
+	
+	<insert id="musicinsertboard" parameterType="writeform">
+	<![CDATA[
+		insert into music (title,image,story,boardnum,genre) values (#{title},#{image},#{story},#{boardnum},#{genre})
+	]]>
+	</insert>
+	
+	<select id="selectMaxBoardnum" resultType="integer">
+	<![CDATA[
+		select max(boardnum) from movie
+	]]>
+	</select>
+	
+		<select id="musicselectMaxBoardnum" resultType="integer">
+	<![CDATA[
+		select max(boardnum) from music
+	]]>
+	</select>
+	
+	<select id="selectBoard" resultType="writeform" parameterType="integer">
+	<![CDATA[
+		select * from movie order by boardnum
+	]]>
+	</select>
+	
+	
+		<select id="musicselectBoard" resultType="writeform" parameterType="integer">
+	<![CDATA[
+		select * from music order by boardnum
+	]]>
+	</select>
+	
+	<select id="showdetail" resultType="writeform" parameterType="integer">
+	<![CDATA[
+		select * from movie where boardnum=#{boardnum} 
+	]]>
+	</select>
+	
+	<select id="musicshowdetail" resultType="writeform" parameterType="integer">
+	<![CDATA[
+		select * from music where boardnum=#{boardnum} 
+	]]>
+	</select>
+	
+	<update id="updateboard" parameterType="writeform">
+	<![CDATA[
+		update movie set title=#{title}, story=#{story}, genre=#{genre} where boardnum=#{boardnum}
+	]]>
+	</update>
+	
+		<update id="musicupdateboard" parameterType="writeform">
+	<![CDATA[
+		update music set title=#{title}, story=#{story}, genre=#{genre} where boardnum=#{boardnum}
+	]]>
+	</update>
+	<delete id="deleteBoard" parameterType="writeform">
+	<![CDATA[
+		delete from movie where boardnum=#{boardnum}
+	]]>
+	</delete>
+	
+	<delete id="musicdeleteBoard" parameterType="writeform">
+	<![CDATA[
+		delete from music where boardnum=#{boardnum}
+	]]>
+	</delete>
+	
+	
+</mapper>

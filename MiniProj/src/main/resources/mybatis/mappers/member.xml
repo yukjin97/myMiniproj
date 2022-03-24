@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mulcam.miniproj.dao.miniDAO">
+
+	<select id="queryMember" resultType="minimem" parameterType="String">
+      <![CDATA[
+         select * from minimember where id=#{id}
+      ]]>
+	</select>
+	
+
+	<insert id="insertMember" parameterType="minimem">
+	<![CDATA[
+		insert into minimember (id,name,password) values (#{id},#{name},#{password})
+	]]>
+	</insert>
+
+	<update id="memberInfoUpdate" parameterType="minimem" >
+	<![CDATA[
+		update minimember set password=#{chkpwd} where password=#{password}
+	]]>
+	</update>
+	
+</mapper>
