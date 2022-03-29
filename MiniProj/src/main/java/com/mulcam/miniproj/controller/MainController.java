@@ -8,7 +8,7 @@ public class MainController {
 
 	
 	@GetMapping(value = "index")
-	public String home() {		
+	public String home() {		 
 		return "index";
 	}
 	@GetMapping(value="error")
